@@ -1,0 +1,11 @@
+FROM adoptopenjdk/openjdk11:alpine-jre
+
+WORKDIR /opt/deploy
+
+ARG JAR_FILE=target/user-management-0.0.1-SNAPSHOT.jar
+
+cp user-management-0.0.1-SNAPSHOT.jar /opt/deploy/app.jar
+
+COPY ${JAR_FILE} app.jar
+
+ENTRYPOINT ["java","-jar","app.jar"]
